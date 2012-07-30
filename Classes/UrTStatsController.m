@@ -16,7 +16,6 @@
 @implementation UrTStatsController
 
 @synthesize window,
-            menuConnect, menuQuit,
             statusMenu,
             statusItem,
             statusImage, statusHighlightImage,
@@ -98,7 +97,7 @@
     __block UrTStatsController *myself = self;
     dispatch_queue_t queue = dispatch_queue_create("com.urtbd.urtstat", 0);
     dispatch_async(queue, ^(void){
-        if (myself.stickyServer) {
+        if (myself.stickyServer.connected) {
             [myself.stickyServer reload];
         }
         NSLog(@"%@", strURL);
@@ -129,6 +128,30 @@
     });
 }
 
+-(void) updateInfo2 {
+    if (self.stickyServer) {
+        [self.stickyServer reload];
+    }
+    // Remove Previous Player Info
+    NSMenuItem *item;
+    while ((item = [self getLastPlayer])) {
+        [self.statusMenu removeItem:item];
+    }
+        
+    NSArray *players = [self.stickyServer.currentGameRecord getPlayers:YES];
+    [self.statusItem setTitle:[NSString stringWithFormat:@"%d",[players count]]];
+    if ([players count]) {
+        for (Player *p in players) {
+            [self addPlayerItem:p];
+        }
+    } else {
+        long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
+        [self.statusMenu insertItem:item atIndex:index];
+        [item release];
+    }
+}
+
 -(IBAction) showConnectDialog:(id)sender {
     [window orderFront:sender];
 	[window makeKeyWindow];
@@ -155,13 +178,44 @@
     item.submenu = submenu;
     [self.statusMenu insertItem:item atIndex:0];
     
-    isRunning = YES;
-    [self updateInfo];
+//    isRunning = YES;
+//    [self updateInfo];
     [window close];
+    
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:dInterval 
+                                             target:self
+                                           selector:@selector(updateInfo2)
+                                           userInfo:nil
+                                            repeats:YES];
 }
 
 -(void)itemSelected:(id)sender {
     
+}
+
+-(void)dealloc {
+    if(timer){
+        [timer invalidate];
+        timer = nil;
+    }
+    
+    self.window = nil;
+    self.statusMenu = nil;
+    self.statusItem = nil;
+    self.statusImage = nil;
+    self.statusHighlightImage = nil;
+    
+    self.stickyServer = nil;
+    
+    self.txtURL = nil;
+    self.txtPort = nil;
+    self.txtInterval = nil;
+    
+    [super dealloc];
 }
 
 @end

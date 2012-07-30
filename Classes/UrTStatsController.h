@@ -16,11 +16,11 @@
     double dInterval;
     
     BOOL isRunning;
+    
+    NSTimer *timer;
 }
 
 @property (nonatomic, retain) IBOutlet NSWindow *window;
-@property (nonatomic, retain) IBOutlet NSMenuItem *menuConnect;
-@property (nonatomic, retain) IBOutlet NSMenuItem *menuQuit;
 @property (nonatomic, retain) IBOutlet NSMenu *statusMenu;
 @property (nonatomic, retain) NSStatusItem *statusItem;
 @property (nonatomic, retain) NSImage *statusImage;
