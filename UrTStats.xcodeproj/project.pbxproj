@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA5A411615C557FA008CDF69 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A411515C557FA008CDF69 /* Player.m */; };
+		FA5A411915C5587D008CDF69 /* RecordBook.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A411815C5587D008CDF69 /* RecordBook.m */; };
+		FA5A411C15C558FA008CDF69 /* UrtServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A411B15C558FA008CDF69 /* UrtServer.m */; };
+		FA6B2FA515C65CCD0063C5FB /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6B2FA315C65CCD0063C5FB /* PlayerViewController.m */; };
+		FA6B2FA615C65CCD0063C5FB /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6B2FA415C65CCD0063C5FB /* PlayerViewController.xib */; };
+		FA6B2FAA15C6631A0063C5FB /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6B2FA915C6631A0063C5FB /* PlayerView.m */; };
+		FAFF94F915C3441D00B6271F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFF94F815C3441D00B6271F /* Cocoa.framework */; };
+		FAFF950315C3441D00B6271F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAFF950115C3441D00B6271F /* InfoPlist.strings */; };
+		FAFF950515C3441D00B6271F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF950415C3441D00B6271F /* main.m */; };
+		FAFF950915C3441D00B6271F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAFF950715C3441D00B6271F /* Credits.rtf */; };
+		FAFF950C15C3441D00B6271F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF950B15C3441D00B6271F /* AppDelegate.m */; };
+		FAFF950F15C3441D00B6271F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF950D15C3441D00B6271F /* MainMenu.xib */; };
+		FAFF951215C3441D00B6271F /* UrTStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAFF951015C3441D00B6271F /* UrTStats.xcdatamodeld */; };
+		FAFF951B15C34BE400B6271F /* UrTStatsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF951A15C34BE400B6271F /* UrTStatsController.m */; };
+		FAFF952015C3513200B6271F /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF951D15C3513200B6271F /* down.png */; };
+		FAFF952115C3513200B6271F /* player_item_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF951E15C3513200B6271F /* player_item_bg.png */; };
+		FAFF952215C3513200B6271F /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF951F15C3513200B6271F /* up.png */; };
+		FAFF952615C3516C00B6271F /* urbanterror.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF952415C3516C00B6271F /* urbanterror.png */; };
+		FAFF952815C3531A00B6271F /* Urban-Terror-3-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF952715C3531A00B6271F /* Urban-Terror-3-icon.png */; };
+		FAFF952E15C36ECA00B6271F /* TabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF952D15C36ECA00B6271F /* TabIcon.png */; };
+		FAFF953015C3707300B6271F /* TabIconSel.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFF952F15C3707300B6271F /* TabIconSel.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA5A411415C557FA008CDF69 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		FA5A411515C557FA008CDF69 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		FA5A411715C5587D008CDF69 /* RecordBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordBook.h; sourceTree = "<group>"; };
+		FA5A411815C5587D008CDF69 /* RecordBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordBook.m; sourceTree = "<group>"; };
+		FA5A411A15C558FA008CDF69 /* UrtServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrtServer.h; sourceTree = "<group>"; };
+		FA5A411B15C558FA008CDF69 /* UrtServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrtServer.m; sourceTree = "<group>"; };
+		FA6B2FA215C65CCD0063C5FB /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		FA6B2FA315C65CCD0063C5FB /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		FA6B2FA415C65CCD0063C5FB /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		FA6B2FA815C6631A0063C5FB /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		FA6B2FA915C6631A0063C5FB /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		FAFF94F415C3441D00B6271F /* UrTStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrTStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFF94F815C3441D00B6271F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FAFF94FB15C3441D00B6271F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FAFF94FC15C3441D00B6271F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FAFF94FD15C3441D00B6271F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAFF950015C3441D00B6271F /* UrTStats-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UrTStats-Info.plist"; sourceTree = "<group>"; };
+		FAFF950215C3441D00B6271F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAFF950415C3441D00B6271F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAFF950615C3441D00B6271F /* UrTStats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UrTStats-Prefix.pch"; sourceTree = "<group>"; };
+		FAFF950815C3441D00B6271F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FAFF950A15C3441D00B6271F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAFF950B15C3441D00B6271F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAFF950E15C3441D00B6271F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FAFF951115C3441D00B6271F /* UrTStats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UrTStats.xcdatamodel; sourceTree = "<group>"; };
+		FAFF951915C34BE400B6271F /* UrTStatsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrTStatsController.h; sourceTree = "<group>"; };
+		FAFF951A15C34BE400B6271F /* UrTStatsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrTStatsController.m; sourceTree = "<group>"; };
+		FAFF951D15C3513200B6271F /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		FAFF951E15C3513200B6271F /* player_item_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_item_bg.png; sourceTree = "<group>"; };
+		FAFF951F15C3513200B6271F /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		FAFF952415C3516C00B6271F /* urbanterror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urbanterror.png; sourceTree = "<group>"; };
+		FAFF952715C3531A00B6271F /* Urban-Terror-3-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Urban-Terror-3-icon.png"; path = "../Urban-Terror-3-icon.png"; sourceTree = "<group>"; };
+		FAFF952D15C36ECA00B6271F /* TabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabIcon.png; sourceTree = "<group>"; };
+		FAFF952F15C3707300B6271F /* TabIconSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabIconSel.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAFF94F115C3441D00B6271F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFF94F915C3441D00B6271F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA5A411215C5579C008CDF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5A411415C557FA008CDF69 /* Player.h */,
+				FA5A411515C557FA008CDF69 /* Player.m */,
+				FA5A411715C5587D008CDF69 /* RecordBook.h */,
+				FA5A411815C5587D008CDF69 /* RecordBook.m */,
+				FA5A411A15C558FA008CDF69 /* UrtServer.h */,
+				FA5A411B15C558FA008CDF69 /* UrtServer.m */,
+			);
+			name = Model;
+			path = model;
+			sourceTree = "<group>";
+		};
+		FAFF94E915C3441D00B6271F = {
+			isa = PBXGroup;
+			children = (
+				FAFF951C15C350F400B6271F /* Resource */,
+				FAFF951815C34B9300B6271F /* Classes */,
+				FAFF94FE15C3441D00B6271F /* UrTStats */,
+				FAFF94F715C3441D00B6271F /* Frameworks */,
+				FAFF94F515C3441D00B6271F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAFF94F515C3441D00B6271F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF94F415C3441D00B6271F /* UrTStats.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAFF94F715C3441D00B6271F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF94F815C3441D00B6271F /* Cocoa.framework */,
+				FAFF94FA15C3441D00B6271F /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAFF94FA15C3441D00B6271F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF94FB15C3441D00B6271F /* AppKit.framework */,
+				FAFF94FC15C3441D00B6271F /* CoreData.framework */,
+				FAFF94FD15C3441D00B6271F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FAFF94FE15C3441D00B6271F /* UrTStats */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF950A15C3441D00B6271F /* AppDelegate.h */,
+				FAFF950B15C3441D00B6271F /* AppDelegate.m */,
+				FAFF950D15C3441D00B6271F /* MainMenu.xib */,
+				FAFF951015C3441D00B6271F /* UrTStats.xcdatamodeld */,
+				FAFF94FF15C3441D00B6271F /* Supporting Files */,
+			);
+			path = UrTStats;
+			sourceTree = "<group>";
+		};
+		FAFF94FF15C3441D00B6271F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF950015C3441D00B6271F /* UrTStats-Info.plist */,
+				FAFF950115C3441D00B6271F /* InfoPlist.strings */,
+				FAFF950415C3441D00B6271F /* main.m */,
+				FAFF950615C3441D00B6271F /* UrTStats-Prefix.pch */,
+				FAFF950715C3441D00B6271F /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAFF951815C34B9300B6271F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FA5A411215C5579C008CDF69 /* Model */,
+				FAFF951915C34BE400B6271F /* UrTStatsController.h */,
+				FAFF951A15C34BE400B6271F /* UrTStatsController.m */,
+				FA6B2FA215C65CCD0063C5FB /* PlayerViewController.h */,
+				FA6B2FA315C65CCD0063C5FB /* PlayerViewController.m */,
+				FA6B2FA415C65CCD0063C5FB /* PlayerViewController.xib */,
+				FA6B2FA815C6631A0063C5FB /* PlayerView.h */,
+				FA6B2FA915C6631A0063C5FB /* PlayerView.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FAFF951C15C350F400B6271F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF952F15C3707300B6271F /* TabIconSel.png */,
+				FAFF952D15C36ECA00B6271F /* TabIcon.png */,
+				FAFF952715C3531A00B6271F /* Urban-Terror-3-icon.png */,
+				FAFF951D15C3513200B6271F /* down.png */,
+				FAFF951E15C3513200B6271F /* player_item_bg.png */,
+				FAFF951F15C3513200B6271F /* up.png */,
+				FAFF952415C3516C00B6271F /* urbanterror.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAFF94F315C3441D00B6271F /* UrTStats */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAFF951515C3441D00B6271F /* Build configuration list for PBXNativeTarget "UrTStats" */;
+			buildPhases = (
+				FAFF94F015C3441D00B6271F /* Sources */,
+				FAFF94F115C3441D00B6271F /* Frameworks */,
+				FAFF94F215C3441D00B6271F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UrTStats;
+			productName = UrTStats;
+			productReference = FAFF94F415C3441D00B6271F /* UrTStats.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAFF94EB15C3441D00B6271F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = WNeeds;
+			};
+			buildConfigurationList = FAFF94EE15C3441D00B6271F /* Build configuration list for PBXProject "UrTStats" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAFF94E915C3441D00B6271F;
+			productRefGroup = FAFF94F515C3441D00B6271F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAFF94F315C3441D00B6271F /* UrTStats */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAFF94F215C3441D00B6271F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFF950315C3441D00B6271F /* InfoPlist.strings in Resources */,
+				FAFF950915C3441D00B6271F /* Credits.rtf in Resources */,
+				FAFF950F15C3441D00B6271F /* MainMenu.xib in Resources */,
+				FAFF952015C3513200B6271F /* down.png in Resources */,
+				FAFF952115C3513200B6271F /* player_item_bg.png in Resources */,
+				FAFF952215C3513200B6271F /* up.png in Resources */,
+				FAFF952615C3516C00B6271F /* urbanterror.png in Resources */,
+				FAFF952815C3531A00B6271F /* Urban-Terror-3-icon.png in Resources */,
+				FAFF952E15C36ECA00B6271F /* TabIcon.png in Resources */,
+				FAFF953015C3707300B6271F /* TabIconSel.png in Resources */,
+				FA6B2FA615C65CCD0063C5FB /* PlayerViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAFF94F015C3441D00B6271F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFF950515C3441D00B6271F /* main.m in Sources */,
+				FAFF950C15C3441D00B6271F /* AppDelegate.m in Sources */,
+				FAFF951215C3441D00B6271F /* UrTStats.xcdatamodeld in Sources */,
+				FAFF951B15C34BE400B6271F /* UrTStatsController.m in Sources */,
+				FA5A411615C557FA008CDF69 /* Player.m in Sources */,
+				FA5A411915C5587D008CDF69 /* RecordBook.m in Sources */,
+				FA5A411C15C558FA008CDF69 /* UrtServer.m in Sources */,
+				FA6B2FA515C65CCD0063C5FB /* PlayerViewController.m in Sources */,
+				FA6B2FAA15C6631A0063C5FB /* PlayerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAFF950115C3441D00B6271F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFF950215C3441D00B6271F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FAFF950715C3441D00B6271F /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFF950815C3441D00B6271F /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FAFF950D15C3441D00B6271F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFF950E15C3441D00B6271F /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAFF951315C3441D00B6271F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FAFF951415C3441D00B6271F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FAFF951615C3441D00B6271F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UrTStats/UrTStats-Prefix.pch";
+				INFOPLIST_FILE = "UrTStats/UrTStats-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FAFF951715C3441D00B6271F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UrTStats/UrTStats-Prefix.pch";
+				INFOPLIST_FILE = "UrTStats/UrTStats-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAFF94EE15C3441D00B6271F /* Build configuration list for PBXProject "UrTStats" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFF951315C3441D00B6271F /* Debug */,
+				FAFF951415C3441D00B6271F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAFF951515C3441D00B6271F /* Build configuration list for PBXNativeTarget "UrTStats" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFF951615C3441D00B6271F /* Debug */,
+				FAFF951715C3441D00B6271F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAFF951015C3441D00B6271F /* UrTStats.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAFF951115C3441D00B6271F /* UrTStats.xcdatamodel */,
+			);
+			currentVersion = FAFF951115C3441D00B6271F /* UrTStats.xcdatamodel */;
+			path = UrTStats.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FAFF94EB15C3441D00B6271F /* Project object */;
+}
