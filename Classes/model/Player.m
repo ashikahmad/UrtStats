@@ -31,6 +31,8 @@
 		} else {
 			self.name = [arr objectAtIndex:2];
 		}
+        self.name = [self.name stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        
 		//NSLog(@"Player name= %@", self.name);
 		
 		self.currentRank = 0;

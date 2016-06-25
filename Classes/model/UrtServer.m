@@ -23,7 +23,7 @@
 
 @implementation UrtServer
 
-@synthesize host, port, connected, currentGameRecord, serverInfoString;
+@synthesize host, port, connected, currentGameRecord; //, serverInfoString;
 
 - (id)initWithHost:(NSString*) hostName portNumber:(int)portNumber{
 	self = [super init];
@@ -75,26 +75,8 @@
 	close(sock);
 	connected = YES;
 	
-	
-	[currentGameRecord reset];
 	NSString* result = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];
-	NSArray* arr = [result componentsSeparatedByString:@"\n"];
-	if ([arr count] > 1) {
-		self.serverInfoString = [arr objectAtIndex:1];
-	}	
-	if ([arr count] > 2) {
-		// add separator
-		
-		int i = 2;
-		for (; i< [arr count]; i++) {
-			NSString* playerInfo = [arr objectAtIndex:i];
-			if (playerInfo.length > 3) {
-				playerInfo = [playerInfo stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-				Player* player = [[Player alloc] initWithString:playerInfo];
-				[self.currentGameRecord addPlayer:player];				
-			}
-		}
-	}
+    [currentGameRecord setUpdatedResponse:result];
 }
 
 

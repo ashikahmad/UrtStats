@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA6D2111D1DA25F00F5B944 /* ServerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA6D2101D1DA25F00F5B944 /* ServerInfo.m */; };
 		FA5A411615C557FA008CDF69 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A411515C557FA008CDF69 /* Player.m */; };
 		FA5A411915C5587D008CDF69 /* RecordBook.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A411815C5587D008CDF69 /* RecordBook.m */; };
 		FA5A411C15C558FA008CDF69 /* UrtServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A411B15C558FA008CDF69 /* UrtServer.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BA6D20F1D1DA25F00F5B944 /* ServerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerInfo.h; sourceTree = "<group>"; };
+		3BA6D2101D1DA25F00F5B944 /* ServerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerInfo.m; sourceTree = "<group>"; };
 		FA5A411415C557FA008CDF69 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		FA5A411515C557FA008CDF69 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		FA5A411715C5587D008CDF69 /* RecordBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordBook.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 				FA5A411815C5587D008CDF69 /* RecordBook.m */,
 				FA5A411A15C558FA008CDF69 /* UrtServer.h */,
 				FA5A411B15C558FA008CDF69 /* UrtServer.m */,
+				3BA6D20F1D1DA25F00F5B944 /* ServerInfo.h */,
+				3BA6D2101D1DA25F00F5B944 /* ServerInfo.m */,
 			);
 			name = Model;
 			path = model;
@@ -264,6 +269,7 @@
 				FA5A411915C5587D008CDF69 /* RecordBook.m in Sources */,
 				FA5A411C15C558FA008CDF69 /* UrtServer.m in Sources */,
 				FA6B2FA515C65CCD0063C5FB /* PlayerViewController.m in Sources */,
+				3BA6D2111D1DA25F00F5B944 /* ServerInfo.m in Sources */,
 				FA6B2FAA15C6631A0063C5FB /* PlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

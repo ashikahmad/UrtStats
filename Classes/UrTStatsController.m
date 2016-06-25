@@ -110,7 +110,7 @@
             }
             
             NSArray *players = [myself.stickyServer.currentGameRecord getPlayers:YES];
-            [myself.statusItem setTitle:[NSString stringWithFormat:@"%d", [players count]]];
+            [myself.statusItem setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)[players count]]];
             if ([players count]) {
                 for (Player *p in players) {
                     [myself addPlayerItem:p];
@@ -130,6 +130,9 @@
 }
 
 -(IBAction) showConnectDialog:(id)sender {
+    [txtURL setTitleWithMnemonic:@"45.119.120.2"];
+    [txtPort setTitleWithMnemonic:@"27960"];
+    [txtInterval setTitleWithMnemonic:@"5"];
     [window orderFront:sender];
 	[window makeKeyWindow];
 	[window setLevel:NSFloatingWindowLevel];

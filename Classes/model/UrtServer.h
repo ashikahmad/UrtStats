@@ -12,7 +12,7 @@
 @interface UrtServer : NSObject
 
 @property (nonatomic, retain) NSString* host;
-@property (nonatomic, retain) NSString* serverInfoString;
+//@property (nonatomic, retain) NSString* serverInfoString;
 @property (nonatomic, retain) RecordBook* currentGameRecord;
 @property (nonatomic, assign) int port;
 @property (nonatomic, assign) BOOL connected;

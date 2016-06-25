@@ -53,4 +53,27 @@
 	return players;
 }
 
+-(void)setUpdatedResponse:(NSString *)response {
+    [self reset];
+    
+    // 2nd line => Server Info
+    NSArray* arr = [response componentsSeparatedByString:@"\n"];
+    if ([arr count] > 1) {
+        NSString *serverInfoString = [arr objectAtIndex:1];
+        self.serverInfo = [[ServerInfo alloc] initWithString:serverInfoString];
+    }
+    
+    // 3rd line to end => Player info per line
+    if ([arr count] > 2) {
+        int i = 2;
+        for (; i< [arr count]; i++) {
+            NSString* playerInfo = [arr objectAtIndex:i];
+            if (playerInfo.length > 3) {
+                Player* player = [[Player alloc] initWithString:playerInfo];
+                [self addPlayer:player];
+            }
+        }
+    }
+}
+
 @end
