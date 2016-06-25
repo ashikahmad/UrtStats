@@ -31,4 +31,20 @@
     return nil;
 }
 
+-(NSString *)gameTypeString {
+    switch (self.gameType) {
+        case UrTGameTypeFreeForAll: return @"Free for All";
+        case UrTGameTypeLastManStanding: return @"Last Man Standing";
+        case UrTGameTypeTeamDeathMatch: return @"Team Death match";
+        case UrTGameTypeTeamSurvivor: return @"Team Survivor";
+        case UrTGameTypeFollowTheLeader: return @"Follow The Leader";
+        case UrTGameTypeCaptureAndHold: return @"Capture and Hold";
+        case UrTGameTypeCaptureTheFlag: return @"Capture the Flag";
+        case UrTGameTypeBombMode: return @"Bomb Mode";
+        case UrTGameTypeJumpTraining: return @"Jump Training";
+            
+        default: return @"Unknown";
+    }
+}
+
 @end

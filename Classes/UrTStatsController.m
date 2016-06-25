@@ -53,6 +53,22 @@
     return item;
 }
 
+// Use -1 for length or position if not needed
+-(NSMenuItem *) addMenuItemWithTitle:(NSString *) title trimLength:(int) length action:(SEL) action to:(NSMenu *) parentItem index:(int) index {
+    NSString *trimmedTitle = title;
+    if (length > 0 && title.length > length) {
+        trimmedTitle = [title substringToIndex:length];
+    }
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:title action:action keyEquivalent:@""];
+    if (index >= 0) {
+        [parentItem insertItem:item atIndex:index];
+    } else {
+        [parentItem addItem:item];
+    }
+    
+    return item;
+}
+
 -(void) addPlayerItem:(Player *) p {
     long index = [statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
     NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:p.name action:nil keyEquivalent:@""];
@@ -81,46 +97,9 @@
     [statusMenu insertItem:item atIndex:index];
 }
 
--(void) updateInfo {
-    if (!isRunning) {
-        NSLog(@"I should not repeat!");
-		return;
-	}
-	
-    __block UrTStatsController *myself = self;
-    dispatch_queue_t queue = dispatch_queue_create("com.urtbd.urtstat", 0);
-    dispatch_async(queue, ^(void){
-        if (myself.stickyServer.connected) {
-            [myself.stickyServer reload];
-        }
-        NSLog(@"%@", strURL);
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            // Remove Previous Player Info
-            NSMenuItem *item;
-            while ((item = [self getLastPlayer])) {
-                [myself.statusMenu removeItem:item];
-            }
-            
-            NSArray *players = [myself.stickyServer.currentGameRecord getPlayers:YES];
-            [myself.statusItem setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)[players count]]];
-            if ([players count]) {
-                for (Player *p in players) {
-                    [myself addPlayerItem:p];
-                }
-            } else {
-                long index = [myself.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
-                NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
-                [myself.statusMenu insertItem:item atIndex:index];
-            }
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, dInterval*NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [myself updateInfo];
-            });
-        });
-    });
-}
 
--(void) updateInfo2 {
+
+-(void) updateInfo {
     dispatch_queue_t queue = dispatch_queue_create("com.urtbd.urtstat", 0);
     dispatch_async(queue, ^{
         if (self.stickyServer) {
@@ -128,6 +107,22 @@
         }
     
         dispatch_async(dispatch_get_main_queue(), ^{
+            // Remove previous server info
+            while ( [self.statusMenu itemAtIndex:1].tag != FIRST_SPLITTER_TAG) {
+                [self.statusMenu removeItemAtIndex:1];
+            }
+            RecordBook *rBook = self.stickyServer.currentGameRecord;
+            [self addMenuItemWithTitle:[NSString stringWithFormat:@"Map: %@", rBook.serverInfo.mapName]
+                            trimLength:-1
+                                action:nil
+                                    to:self.statusMenu
+                                 index:1];
+            [self addMenuItemWithTitle:[NSString stringWithFormat:@"%@: %d min", rBook.serverInfo.gameTypeString, rBook.serverInfo.timeLimit]
+                            trimLength:-1
+                                action:nil
+                                    to:self.statusMenu
+                                 index:1];
+            
             // Remove Previous Player Info
             NSMenuItem *item;
             while ((item = [self getLastPlayer])) {
@@ -178,8 +173,6 @@
     item.submenu = submenu;
     [self.statusMenu insertItem:item atIndex:0];
     
-//    isRunning = YES;
-//    [self updateInfo];
     [window close];
     
     if (timer) {
@@ -188,13 +181,13 @@
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:dInterval 
                                              target:self
-                                           selector:@selector(updateInfo2)
+                                           selector:@selector(updateInfo)
                                            userInfo:nil
                                             repeats:YES];
 }
 
 -(void)itemSelected:(id)sender {
-    
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:strURL.length>25?[NSString stringWithFormat:@"%@..", [strURL substringToIndex:25]]:strURL action:nil keyEquivalent:@""];
 }
 
 -(void)dealloc {
