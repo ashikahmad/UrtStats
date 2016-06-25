@@ -25,7 +25,6 @@
 -(void)awakeFromNib {
     // create the NSStatusItem and set it's length
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [statusItem retain];
     
     // Used to detect where our files are
     NSBundle *bundle = [NSBundle mainBundle];
@@ -44,7 +43,6 @@
     long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
     NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
     [self.statusMenu insertItem:item atIndex:index];
-    [item release];
 }
 
 -(NSMenuItem *) getLastPlayer {
@@ -66,7 +64,6 @@
     [vc.view needsDisplay];
     [vc.view display];
     [item setView:vc.view];
-    [vc release];
     
     NSArray *infos = [NSArray arrayWithObjects:
                       p.name,
@@ -78,13 +75,10 @@
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:info
                                                       action:@selector(itemSelected:) keyEquivalent:@""];
         [subMenu addItem:item];
-        [item release];
     }
     [item setSubmenu:subMenu];
-    [subMenu release];
     
     [statusMenu insertItem:item atIndex:index];
-    [item release];
 }
 
 -(void) updateInfo {
@@ -117,7 +111,6 @@
                 long index = [myself.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
                 NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
                 [myself.statusMenu insertItem:item atIndex:index];
-                [item release];
             }
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, dInterval*NSEC_PER_SEC);
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -151,7 +144,6 @@
                 long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
                 NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
                 [self.statusMenu insertItem:item atIndex:index];
-                [item release];
             }
         });
     });
@@ -222,8 +214,6 @@
     self.txtURL = nil;
     self.txtPort = nil;
     self.txtInterval = nil;
-    
-    [super dealloc];
 }
 
 @end
