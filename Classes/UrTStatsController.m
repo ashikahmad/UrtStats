@@ -54,16 +54,23 @@
 }
 
 // Use -1 for length or position if not needed
--(NSMenuItem *) addMenuItemWithTitle:(NSString *) title trimLength:(int) length action:(SEL) action to:(NSMenu *) parentItem index:(int) index {
++(NSMenuItem *) addMenuItemWithTitle:(NSString *) title trimLength:(int) length target:(id) target action:(SEL) action to:(NSMenu *) parentItem index:(int) index config:(void (^)(NSMenuItem *item)) configBlock {
     NSString *trimmedTitle = title;
     if (length > 0 && title.length > length) {
         trimmedTitle = [title substringToIndex:length];
     }
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:title action:action keyEquivalent:@""];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
+    item.title = title;
+    item.target = target;
+    item.action = action;
     if (index >= 0) {
         [parentItem insertItem:item atIndex:index];
     } else {
         [parentItem addItem:item];
+    }
+    
+    if (configBlock) {
+        configBlock(item);
     }
     
     return item;
@@ -107,41 +114,86 @@
         }
     
         dispatch_async(dispatch_get_main_queue(), ^{
-            // Remove previous server info
-            while ( [self.statusMenu itemAtIndex:1].tag != FIRST_SPLITTER_TAG) {
-                [self.statusMenu removeItemAtIndex:1];
-            }
-            RecordBook *rBook = self.stickyServer.currentGameRecord;
-            [self addMenuItemWithTitle:[NSString stringWithFormat:@"Map: %@", rBook.serverInfo.mapName]
-                            trimLength:-1
-                                action:nil
-                                    to:self.statusMenu
-                                 index:1];
-            [self addMenuItemWithTitle:[NSString stringWithFormat:@"%@: %d min", rBook.serverInfo.gameTypeString, rBook.serverInfo.timeLimit]
-                            trimLength:-1
-                                action:nil
-                                    to:self.statusMenu
-                                 index:1];
-            
-            // Remove Previous Player Info
-            NSMenuItem *item;
-            while ((item = [self getLastPlayer])) {
-                [self.statusMenu removeItem:item];
-            }
-            
-            NSArray *players = [self.stickyServer.currentGameRecord getPlayers:YES];
-            [self.statusItem setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)[players count]]];
-            if ([players count]) {
-                for (Player *p in players) {
-                    [self addPlayerItem:p];
-                }
-            } else {
-                long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
-                NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
-                [self.statusMenu insertItem:item atIndex:index];
-            }
+            [self updateUI];
         });
     });
+}
+
+// Should be called form main thread
+-(void) updateUI {
+    // Remove previous server info
+    while ( [self.statusMenu itemAtIndex:0].tag != FIRST_SPLITTER_TAG) {
+        [self.statusMenu removeItemAtIndex:0];
+    }
+    
+    // Remove Previous Player Info
+    NSMenuItem *item;
+    while ((item = [self getLastPlayer])) {
+        [self.statusMenu removeItem:item];
+    }
+    
+    if(stickyServer) {
+        __block typeof(self) mySelf = self;
+        
+        [UrTStatsController addMenuItemWithTitle:strURL trimLength:25 target:nil action:nil to:statusMenu index:0 config:^(NSMenuItem *item) {
+            NSMenu *submenu = [[NSMenu alloc] init];
+            [UrTStatsController addMenuItemWithTitle:@"Disconnect"
+                                          trimLength:-1
+                                              target:mySelf
+                                              action:@selector(disconnect)
+                                                  to:submenu
+                                               index:-1
+                                              config:nil];
+            item.submenu = submenu;
+        }];
+        
+        RecordBook *rBook = self.stickyServer.currentGameRecord;
+        if (rBook.serverInfo.mapName) {
+            [UrTStatsController addMenuItemWithTitle:[NSString stringWithFormat:@"Map: %@", rBook.serverInfo.mapName]
+                                          trimLength:-1
+                                              target:nil
+                                              action:nil
+                                                  to:self.statusMenu
+                                               index:1
+                                              config:nil];
+            [UrTStatsController addMenuItemWithTitle:[NSString stringWithFormat:@"%@: %d min", rBook.serverInfo.gameTypeString, rBook.serverInfo.timeLimit]
+                                          trimLength:-1
+                                              target:nil
+                                              action:nil
+                                                  to:self.statusMenu
+                                               index:1
+                                              config:nil];
+        }
+        
+        NSArray *players = [self.stickyServer.currentGameRecord getPlayers:YES];
+        [self.statusItem setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)[players count]]];
+        if ([players count]) {
+            for (Player *p in players) {
+                [self addPlayerItem:p];
+            }
+        } else {
+            long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
+            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
+            [self.statusMenu insertItem:item atIndex:index];
+        }
+    } else {
+        [UrTStatsController addMenuItemWithTitle:@"Connect..."
+                                      trimLength:-1
+                                          target:self
+                                          action:@selector(showConnectDialog:)
+                                              to:self.statusMenu
+                                           index:0
+                                          config:nil];
+        
+        NSInteger index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
+        [UrTStatsController addMenuItemWithTitle:@"[Player list here]"
+                                      trimLength:-1
+                                          target: nil
+                                          action:nil
+                                              to:self.statusMenu
+                                           index:(int)index
+                                          config:nil];
+    }
 }
 
 -(IBAction) showConnectDialog:(id)sender {
@@ -161,17 +213,7 @@
     self.stickyServer = [[UrtServer alloc] initWithHost:strURL
                                         portNumber:iPort];
     
-    [self.statusMenu removeItemAtIndex:0];
-    
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:strURL.length>25?[NSString stringWithFormat:@"%@..", [strURL substringToIndex:25]]:strURL action:nil keyEquivalent:@""];
-    NSMenu *submenu = [[NSMenu alloc] init];
-    NSMenuItem *cItem = [[NSMenuItem alloc] init];
-    cItem.title = @"Connect to Other..";
-    cItem.target = self;
-    cItem.action = @selector(showConnectDialog:);
-    [submenu addItem:cItem];
-    item.submenu = submenu;
-    [self.statusMenu insertItem:item atIndex:0];
+    [self updateUI];
     
     [window close];
     
@@ -186,8 +228,18 @@
                                             repeats:YES];
 }
 
+-(IBAction) disconnect {
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    
+    stickyServer = nil;
+    [self updateUI];
+}
+
 -(void)itemSelected:(id)sender {
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:strURL.length>25?[NSString stringWithFormat:@"%@..", [strURL substringToIndex:25]]:strURL action:nil keyEquivalent:@""];
+    
 }
 
 -(void)dealloc {
