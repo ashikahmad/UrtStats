@@ -45,7 +45,6 @@
     NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
     [self.statusMenu insertItem:item atIndex:index];
     [item release];
-    
 }
 
 -(NSMenuItem *) getLastPlayer {
@@ -129,27 +128,33 @@
 }
 
 -(void) updateInfo2 {
-    if (self.stickyServer) {
-        [self.stickyServer reload];
-    }
-    // Remove Previous Player Info
-    NSMenuItem *item;
-    while ((item = [self getLastPlayer])) {
-        [self.statusMenu removeItem:item];
-    }
-        
-    NSArray *players = [self.stickyServer.currentGameRecord getPlayers:YES];
-    [self.statusItem setTitle:[NSString stringWithFormat:@"%d",[players count]]];
-    if ([players count]) {
-        for (Player *p in players) {
-            [self addPlayerItem:p];
+    dispatch_queue_t queue = dispatch_queue_create("com.urtbd.urtstat", 0);
+    dispatch_async(queue, ^{
+        if (self.stickyServer) {
+            [self.stickyServer reload];
         }
-    } else {
-        long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
-        [self.statusMenu insertItem:item atIndex:index];
-        [item release];
-    }
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Remove Previous Player Info
+            NSMenuItem *item;
+            while ((item = [self getLastPlayer])) {
+                [self.statusMenu removeItem:item];
+            }
+            
+            NSArray *players = [self.stickyServer.currentGameRecord getPlayers:YES];
+            [self.statusItem setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)[players count]]];
+            if ([players count]) {
+                for (Player *p in players) {
+                    [self addPlayerItem:p];
+                }
+            } else {
+                long index = [self.statusMenu indexOfItemWithTag:LAST_SPLITTER_TAG];
+                NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Players Connected!" action:nil keyEquivalent:@""];
+                [self.statusMenu insertItem:item atIndex:index];
+                [item release];
+            }
+        });
+    });
 }
 
 -(IBAction) showConnectDialog:(id)sender {

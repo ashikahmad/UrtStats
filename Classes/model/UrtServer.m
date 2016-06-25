@@ -23,7 +23,7 @@
 
 @implementation UrtServer
 
-@synthesize host, port, connected, currentGameRecord; //, serverInfoString;
+@synthesize host, port, connected, currentGameRecord;
 
 - (id)initWithHost:(NSString*) hostName portNumber:(int)portNumber{
 	self = [super init];
