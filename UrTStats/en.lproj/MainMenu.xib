@@ -355,7 +355,6 @@
 							<string key="NSFrame">{{223, 6}, {92, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1061243282">
 								<int key="NSCellFlags">67239424</int>
@@ -474,22 +473,6 @@
 						<reference key="destination" ref="222623839"/>
 					</object>
 					<int key="connectionID">599</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuQuit</string>
-						<reference key="source" ref="777776691"/>
-						<reference key="destination" ref="252461257"/>
-					</object>
-					<int key="connectionID">600</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuConnect</string>
-						<reference key="source" ref="777776691"/>
-						<reference key="destination" ref="511327691"/>
-					</object>
-					<int key="connectionID">601</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
